@@ -90,9 +90,7 @@ async def pipcheck(pip):
         )
 
         stdout, stderr = await pipc.communicate()
-        if pipout := str(stdout.decode().strip()) + str(
-            stderr.decode().strip()
-        ):
+        if pipout := str(stdout.decode().strip()) + str(stderr.decode().strip()):
             if len(pipout) > 4096:
                 await pip.edit("**Output too large, sending as file...**")
                 with open("output.txt", "w+") as file:

@@ -91,7 +91,7 @@ async def locks(event):
         await event.edit(f"**Locked {what} for this chat!**")
     except BaseException as e:
         return await event.edit(
-            f'**Do I have proper rights for that ??**\nError: `{e}`'
+            f"**Do I have proper rights for that ??**\nError: `{e}`"
         )
 
 
@@ -178,7 +178,7 @@ async def rem_locks(event):
         await event.edit(f"**Unlocked {what} for this chat!**")
     except BaseException as e:
         return await event.edit(
-            f'**Do I have proper rights for that ??**\nError: `{e}`'
+            f"**Do I have proper rights for that ??**\nError: `{e}`"
         )
 
 

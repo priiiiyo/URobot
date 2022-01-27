@@ -27,9 +27,7 @@ STORAGE = lambda n: Storage(Path("data") / n)
 
 load_dotenv("config.env")
 
-if CONSOLE_LOGGER_VERBOSE := sb(
-    os.environ.get("CONSOLE_LOGGER_VERBOSE") or "False"
-):
+if CONSOLE_LOGGER_VERBOSE := sb(os.environ.get("CONSOLE_LOGGER_VERBOSE") or "False"):
     basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         level=DEBUG,
@@ -48,8 +46,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 8:
     sys.exit(1)
 
 if CONFIG_CHECK := (
-    os.environ.get("___________PLOX_______REMOVE_____THIS_____LINE__________")
-    or None
+    os.environ.get("___________PLOX_______REMOVE_____THIS_____LINE__________") or None
 ):
     LOGS.info(
         "Please remove the line mentioned in the first hashtag from the config.env file"

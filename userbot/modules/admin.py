@@ -250,7 +250,7 @@ async def ban(bon):
     if reason:
         await bon.edit(f"**{str(user.id)}** was banned!\nReason: {reason}")
     else:
-        await bon.edit(f'**{user.id}** was banned!')
+        await bon.edit(f"**{user.id}** was banned!")
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
@@ -575,7 +575,7 @@ async def kick(usr):
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        return await usr.edit(NO_PERM + f'\n{e}')
+        return await usr.edit(NO_PERM + f"\n{e}")
 
     if reason:
         await usr.edit(

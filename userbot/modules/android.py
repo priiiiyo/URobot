@@ -92,8 +92,7 @@ async def codename_info(request):
     if results := [
         i
         for i in devices
-        if i["name"].lower() == device.lower()
-        or i["model"].lower() == device.lower()
+        if i["name"].lower() == device.lower() or i["model"].lower() == device.lower()
     ]:
         reply = f"**Search results for** `{brand} {device}`:\n\n"
         if len(results) > 8:
