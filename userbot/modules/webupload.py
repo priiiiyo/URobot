@@ -50,8 +50,7 @@ async def webupload(event):
     )
     stdout, stderr = await process.communicate()
     stderr.decode().strip()
-    t_response = stdout.decode().strip()
-    if t_response:
+    if t_response := stdout.decode().strip():
         try:
             t_response = json.dumps(json.loads(t_response), sort_keys=True, indent=4)
         except Exception:

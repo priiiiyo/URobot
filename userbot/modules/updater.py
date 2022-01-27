@@ -137,8 +137,11 @@ async def upstream(event):
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     try:
-        txt = "**Oops.. Updater cannot continue due to "
-        txt += "some problems**\n`LOGTRACE:`\n"
+        txt = (
+            "**Oops.. Updater cannot continue due to "
+            + "some problems**\n`LOGTRACE:`\n"
+        )
+
         repo = Repo()
     except NoSuchPathError as error:
         await event.edit(f"{txt}\n**Directory** `{error}` **was not found.**")

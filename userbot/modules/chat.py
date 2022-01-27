@@ -117,8 +117,7 @@ async def keep_read(message):
         from userbot.modules.sql_helper.keep_read_sql import is_kread
     except AttributeError:
         return
-    kread = is_kread()
-    if kread:
+    if kread := is_kread():
         for i in kread:
             if i.groupid == str(message.chat_id):
                 await message.client.send_read_acknowledge(message.chat_id)

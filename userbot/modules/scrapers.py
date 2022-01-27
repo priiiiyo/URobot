@@ -410,8 +410,7 @@ async def imdb(e):
             story_line = soup.find("div", "inline canwrap").findAll("p")[0].text
         else:
             story_line = "Not available"
-        info = soup.findAll("div", "txt-block")
-        if info:
+        if info := soup.findAll("div", "txt-block"):
             mov_country = []
             mov_language = []
             for node in info:
@@ -652,7 +651,7 @@ async def download_video(v_url):
         with YoutubeDL(opts) as rip:
             rip_data = rip.extract_info(url)
     except DownloadError as DE:
-        return await v_url.edit(f"`{str(DE)}`")
+        return await v_url.edit(f'`{DE}`')
     except ContentTooShortError:
         return await v_url.edit("**The download content was too short.**")
     except GeoRestrictedError:
@@ -671,7 +670,7 @@ async def download_video(v_url):
     except ExtractorError:
         return await v_url.edit("**There was an error during info extraction.**")
     except Exception as e:
-        return await v_url.edit(f"{str(type(e)): {str(e)}}")
+        return await v_url.edit(f'{str(type(e)): {e}}')
     c_time = time.time()
     if song:
         await v_url.edit(f"**Preparing to upload song:**\n**{rip_data['title']}**")

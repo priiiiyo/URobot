@@ -225,8 +225,7 @@ async def check_progress_for_dl(gid, event, previous):
             await sleep(15)
             await check_progress_for_dl(gid, event, previous)
             file = aria2.get_download(gid)
-            complete = file.is_complete
-            if complete:
+            if complete := file.is_complete:
                 return await event.edit(
                     "**Downloaded successfully!**\n\n"
                     f"**Name:** `{file.name}`\n"

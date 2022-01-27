@@ -82,14 +82,8 @@ def register(**args):
             try:
                 await func(check)
 
-            # Thanks to @kandnub for this HACK.
-            # Raise StopPropagation to Raise StopPropagation
-            # This needed for AFK to working properly
-
             except events.StopPropagation:
                 raise events.StopPropagation
-            # This is a gay exception and must be passed out. So that it doesnt
-            # spam chats
             except KeyboardInterrupt:
                 pass
             except BaseException as e:
@@ -100,14 +94,16 @@ def register(**args):
 
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**USERBOT ERROR REPORT**\n"
                     link = "[Support Chat](https://t.me/KensurOT)"
-                    text += "If you want to, you can report it"
+                    text = "**USERBOT ERROR REPORT**\n" + "If you want to, you can report it"
                     text += f"- just forward this message to {link}.\n"
                     text += "I won't log anything except the fact of error and date\n"
 
-                    ftext = "\nDisclaimer:\nThis file uploaded ONLY here, "
-                    ftext += "we logged only fact of error and date, "
+                    ftext = (
+                        "\nDisclaimer:\nThis file uploaded ONLY here, "
+                        + "we logged only fact of error and date, "
+                    )
+
                     ftext += "we respect your privacy, "
                     ftext += "you may not report this error if you've "
                     ftext += "any confidential data here, no one will see your data "
@@ -153,8 +149,6 @@ def register(**args):
                         )
 
                     remove("error.log")
-            else:
-                pass
 
         if not disable_edited:
             bot.add_event_handler(wrapper, events.MessageEdited(**args))

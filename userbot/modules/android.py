@@ -52,8 +52,7 @@ async def device_info(request):
             "certified-android-devices/master/by_device.json"
         ).text
     )
-    results = data.get(codename)
-    if results:
+    if results := data.get(codename):
         reply = f"**Search results for** `{codename}`:\n\n"
         for item in results:
             reply += (
@@ -90,12 +89,12 @@ async def codename_info(request):
     )
     devices_lower = {k.lower(): v for k, v in data.items()}  # Lower brand names in JSON
     devices = devices_lower.get(brand)
-    results = [
+    if results := [
         i
         for i in devices
-        if i["name"].lower() == device.lower() or i["model"].lower() == device.lower()
-    ]
-    if results:
+        if i["name"].lower() == device.lower()
+        or i["model"].lower() == device.lower()
+    ]:
         reply = f"**Search results for** `{brand} {device}`:\n\n"
         if len(results) > 8:
             results = results[:8]
